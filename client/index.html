@@ -1,29 +1,56 @@
 <html lang="en">
-  <meta>
-    <meta charset="UTF-8">
-    <title>Hello World in Vue.js</title>
-  </meta>
+<meta>
+<meta charset="UTF-8">
+<title>Hello World in Vue.js</title>
+</meta>
 
-  <body>
+<body>
 
-    <div id="helloWorld">
-      <p>{{ postBody }}</p>
-    </div>
+  <div id="helloWorld">
+    <p>{{ postBody }}</p>
+    <p>{{ request }}</p>
+  </div>
 
-    <script
-      src="//cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.min.js">
-    </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <script>
-      new Vue({
-        el: "#helloWorld",
-        data() {
-          return {
-            postBody: [0,1,2,3,4,5]
-          }
+  <script>
+    new Vue({
+      el: "#helloWorld",
+      data() {
+        return {
+          postBody: '',
+          request: 'test'
         }
-      });
-    </script>
+      },
+      created: function() {
+        this.loadUsers()
+        this.listenToRoute()
+      },
+      methods: {
+        loadUsers: function() {
+          this.postBody = 'Hello World'
+        },
+        listenToRoute: function() {
+          axios.get({
+              baseURL: 'http://localhost:3000/hello',
+              withCredentials: true,
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              }
+            })
+            .then(response => {
+              this.request = response;
+            })
+            .catch(e => {
+              console.log(e);
+            });
+        }
+      }
+    });
+  </script>
 
-  </body>
+</body>
+
 </html>
