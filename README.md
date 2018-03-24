@@ -3,5 +3,5 @@
   - go run helloWorld.go
 
 #To run server
-  - cd client /
+  - cd client/
   - npm start
