@@ -12,15 +12,19 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'userInput',
+  computed: {
+    ...mapGetters({
+        message: getMessage,
+        yearsToRetirement: getYearsToRetirement,
+        initialInvestment: getInitialInvestment,
+        continousInvestment: getContinousInvestment
+    })
+  },
   data () {
-    return {
-      message: '',
-      yearsToRetirement: '',
-      initialInvestment: '',
-      continousInvestment: ''
-    }
   }
 }
 </script>
