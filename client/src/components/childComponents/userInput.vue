@@ -8,10 +8,13 @@
     <input v-model="initialInvestment" placeholder="Enter text here:">
     <p>How much do you want to put in a year: {{continousInvestment}}</p>
     <input v-model="continousInvestment" placeholder="Enter text here:">
+    <p>Vuex Test: {{getMessage}} </p>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'userInput',
   data() {
@@ -22,6 +25,11 @@ export default {
       continousInvestment: '',
     }
   },
+  computed: {
+    ...mapGetters([
+      'getMessage'
+    ])
+  }
 }
 </script>
 
