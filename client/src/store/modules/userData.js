@@ -20,6 +20,13 @@ const getters = {
   }
 }
 
+export default {
+  state,
+  getters
+}
+
+
+
 // const actions = {
 //   setMessage({commit}, message){
 //     commit('setMessage', message)
@@ -49,8 +56,3 @@ const getters = {
 //     state.continousInvestment = continousInvestment
 //   }
 // }
-
-export default {
-  state,
-  getters
-}

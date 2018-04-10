@@ -31,7 +31,7 @@ export default {
   }
   .grid-container{
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto;
     grid-gap: 10px;
     padding: 30px;
   }
