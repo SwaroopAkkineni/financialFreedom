@@ -4,4 +4,4 @@
 
 #To run server
   - cd client/
-  - npm start
+  - npm run dev

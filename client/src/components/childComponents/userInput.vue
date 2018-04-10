@@ -1,31 +1,27 @@
 <template>
   <div>
-    <p>Please enter your name:{{message}}</p>
-    <input v-model="message">
+    <p>Please enter your name: {{message}}</p>
+    <input v-model="message" placeholder="Enter text here:">
     <p>In how many years do you wan to retire in: {{yearsToRetirement}}</p>
-    <input v-model="yearsToRetirement">
-    <p>How much is your initial investment:{{initialInvestment}}</p>
-    <input v-model="initialInvestment">
-    <p>How much do you want to put in a year:{{continousInvestment}}</p>
-    <input v-model="continousInvestment">
+    <input v-model="yearsToRetirement" placeholder="Enter text here:">
+    <p>How much is your initial investment: {{initialInvestment}}</p>
+    <input v-model="initialInvestment" placeholder="Enter text here:">
+    <p>How much do you want to put in a year: {{continousInvestment}}</p>
+    <input v-model="continousInvestment" placeholder="Enter text here:">
   </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-
 export default {
   name: 'userInput',
-  computed: {
-    ...mapGetters({
-        message: getMessage,
-        yearsToRetirement: getYearsToRetirement,
-        initialInvestment: getInitialInvestment,
-        continousInvestment: getContinousInvestment
-    })
+  data() {
+    return {
+      message: '',
+      yearsToRetirement: '',
+      initialInvestment: '',
+      continousInvestment: '',
+    }
   },
-  data () {
-  }
 }
 </script>
 
