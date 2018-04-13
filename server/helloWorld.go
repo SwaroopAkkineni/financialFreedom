@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bytes"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -27,6 +29,16 @@ func helloWorld(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, "Hello world!")
 }
 
+func setDataFromClient(w http.ResponseWriter, r *http.Request) {
+	buff := new(bytes.Buffer)
+
+	buff.ReadFrom(r.Body)
+	body := buff.String()
+
+	io.WriteString(w, body)
+	w.WriteHeader(http.StatusOK)
+}
+
 func (mh *myHandler) addRouteToMux(route string, handlerFunc func(http.ResponseWriter, *http.Request)) {
 	mh.mux[route] = handlerFunc
 }
@@ -45,6 +57,7 @@ func main() {
 	}
 
 	mh.addRouteToMux("/hello", helloWorld)
+	mh.addRouteToMux("/setDataFromClient", setDataFromClient)
 
 	log.Fatal(server.ListenAndServe())
 }
