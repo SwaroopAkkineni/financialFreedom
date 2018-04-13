@@ -25,7 +25,6 @@ var mux map[string]func(http.ResponseWriter, *http.Request)
 
 func helloWorld(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, "Hello world!")
-
 }
 
 func (mh *myHandler) addRouteToMux(route string, handlerFunc func(http.ResponseWriter, *http.Request)) {
