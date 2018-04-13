@@ -1,21 +1,24 @@
 <template>
   <div>
-    <p>Please enter your name: -- {{getMessage}}</p>
-    <input v-model="message" v-on:change="updateMessage" placeholder="Enter text here:">
+      <p>Please enter your name: -- {{getMessage}}</p>
+      <input v-model="message" v-on:change="updateMessage" placeholder="Enter text here:">
 
-    <p>In how many years do you wan to retire in:  {{getYearsToRetirement}}</p>
-    <input v-model="yearsToRetirement" v-on:change="updateYearsToRetirement" placeholder="Enter text here:">
+      <p>In how many years do you wan to retire in:  {{getYearsToRetirement}}</p>
+      <input v-model="yearsToRetirement" v-on:change="updateYearsToRetirement" placeholder="Enter text here:">
 
-    <p>How much is your initial investment: -- {{getInitialInvestment}}</p>
-    <input v-model="initialInvestment" v-on:change="updateInitialInvestment" placeholder="Enter text here:">
+      <p>How much is your initial investment: -- {{getInitialInvestment}}</p>
+      <input v-model="initialInvestment" v-on:change="updateInitialInvestment" placeholder="Enter text here:">
 
-    <p>How much do you want to put in a year:  -- {{getContinousInvestment}}</p>
-    <input v-model="continousInvestment" v-on:change="updateContinousInvestment" placeholder="Enter text here:">
+      <p>How much do you want to put in a year:  -- {{getContinousInvestment}}</p>
+      <input v-model="continousInvestment" v-on:change="updateContinousInvestment" placeholder="Enter text here:">
+
+      <button v-on:click="sendData">send</button>
   </div>
 </template>
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
+import postRequestService from '@/services/postRequest'
 
 export default {
   name: 'userInput',
@@ -53,6 +56,9 @@ export default {
     },
     updateContinousInvestment () {
       this.setContinousInvestment(this.continousInvestment)
+    },
+    sendData () {
+      postRequestService.sendData(this.yearsToRetirement, this.initialInvestment, this.continousInvestment)
     },
   }
 }

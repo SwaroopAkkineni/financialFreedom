@@ -1,8 +1,8 @@
 const state = {
-  message: 'testA',
-  yearsToRetirement: 'testB',
-  initialInvestment: 'testC',
-  continousInvestment: 'testD',
+  message: '',
+  yearsToRetirement: '',
+  initialInvestment: '',
+  continousInvestment: '',
 }
 
 const actions = {
